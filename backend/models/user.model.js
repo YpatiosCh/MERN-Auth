@@ -1,14 +1,13 @@
 import mongoose from "mongoose";
-import mongoos from "mongoose";
 
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
         unique: true
-    }, 
+    },
     password: {
-        type: String, 
+        type: String,
         required: true
     },
     name: {
@@ -27,7 +26,7 @@ const userSchema = new mongoose.Schema({
     resetPasswordExpiresAt: Date,
     verificationToken: String,
     verificationTokenExpiresAt: Date,
-},{timestamps: true});
+}, { timestamps: true });
 
 
 export const User = mongoose.model('User', userSchema);
