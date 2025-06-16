@@ -18,6 +18,8 @@ export const signup = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
+
+        // verificationToken will be used to verify user's email
         const verificationToken = generateVerificationToken();
 
         const user = new User({
@@ -30,7 +32,7 @@ export const signup = async (req, res) => {
 
         await user.save();
 
-        // jwt
+        // jwt and set cookie
         generateTokenAndSetCookie(res, user._id)
 
         // respond with success message
